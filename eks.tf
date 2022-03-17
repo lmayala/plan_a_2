@@ -11,6 +11,7 @@ module "eks"{
     vpc_id = module.vpc.vpc_id
     workers_group_defaults = {
         root_volume_type = "gp2"
+        instance_type = "t3a.large"
     }
   node_groups = {
     example = {
@@ -18,7 +19,6 @@ module "eks"{
       max_capacity     = 2
       min_capacity     = 2
 
-      instance_type = "t3a.large"
       k8s_labels = {
         Environment = "test"
         GithubRepo  = "plan_a"
